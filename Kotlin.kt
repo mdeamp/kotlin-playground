@@ -4,6 +4,34 @@ fun myFunction(param: String) {
     println("hello parameter: $param")
 }
 
+private fun privateFunction() {
+    println("This is a private function")
+}
+
+internal fun internalFunction() {
+    println("This is an internal function")
+}
+
+fun publicFunction() {
+    println("This is a public function")
+}
+
+open class ParentClass {
+    protected val protectedProperty = 42
+}
+
+class ChildClass : ParentClass() {
+    fun accessProtectedProperty() {
+        println("Protected property value: $protectedProperty")
+    }
+}
+
+class AnotherClass {
+    fun accessInternalFunction() {
+        internalFunction()
+    }
+}
+
 fun main() {
     println("Hello World")
     val myName = "Mau"
@@ -124,11 +152,7 @@ fun main() {
 
     println("Let's play with HashMap a second time")
     val secondStudentScores: HashMap<String, Int> = hashMapOf(
-        "Alice" to 95,
-        "Bob" to 80,
-        "Carol" to 88,
-        "David" to 92,
-        "Eve" to 78
+        "Alice" to 95, "Bob" to 80, "Carol" to 88, "David" to 92, "Eve" to 78
     )
     val highScorerEntry = secondStudentScores.entries.find { it.value >= 90 }
     println("High scorer: ${highScorerEntry?.key} - ${highScorerEntry?.value}")
@@ -174,7 +198,14 @@ fun main() {
     }
     println("Result: $tryResult")
 
-
+    println("Let's play with visibility")
+    privateFunction()
+    internalFunction()
+    publicFunction()
+    val childObject = ChildClass()
+    childObject.accessProtectedProperty()
+    val anotherObject = AnotherClass()
+    anotherObject.accessInternalFunction()
 }
 
 class Person(private val name: String, private var age: Int, doesSmile: Boolean) {
