@@ -139,6 +139,42 @@ fun main() {
     }
     val totalScore = secondStudentScores.values.reduce { acc, score -> acc + score }
     println("Total score: $totalScore")
+
+    println("Let's play with Lists")
+    val fruits = listOf("Apple", "Banana", "Orange")
+    val foundFruit = fruits.find { it == "Banana" }
+    println("Found fruit: $foundFruit")
+    val filteredFruits = fruits.filter { it.length > 5 }
+    println("Filtered fruits: $filteredFruits")
+    val totalFruitLength = fruits.map { it.length }.reduce { acc, length -> acc + length }
+    println("Total length of all fruits: $totalFruitLength")
+    val colors = mutableListOf("Red", "Green", "Blue")
+    val foundColor = colors.find { it == "Green" }
+    println("Found color: $foundColor")
+    val filteredColors = colors.filter { it.length > 3 }
+    println("Filtered colors: $filteredColors")
+    val totalColorLength = colors.map { it.length }.reduce { acc, length -> acc + length }
+    println("Total length of all colors: $totalColorLength")
+
+    println("Let's play with Try-Catch")
+    try {
+        @Suppress("DIVISION_BY_ZERO") val result = 10 / 0
+        println("Result: $result")
+    } catch (e: ArithmeticException) {
+        println("An ArithmeticException occurred: ${e.message}")
+    } catch (e: Exception) {
+        println("An exception occurred: ${e.message}")
+    } finally {
+        println("This code is in the 'finally' block")
+    }
+    @Suppress("DIVISION_BY_ZERO") val tryResult = try {
+        10 / 0
+    } catch (e: ArithmeticException) {
+        -1
+    }
+    println("Result: $tryResult")
+
+
 }
 
 class Person(private val name: String, private var age: Int, doesSmile: Boolean) {
